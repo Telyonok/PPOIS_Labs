@@ -1,10 +1,14 @@
+///
+/// Simulates a tag tile
+/// 
+
 #pragma once
 class Tile
 {
 public:
 	Tile(int value, int x, int y);
 	char GetValue();
-	bool GheckPlacement(int x, int y);
+	bool CheckPlacement(int x, int y);
 private:
 	char value;
 	int correctX;

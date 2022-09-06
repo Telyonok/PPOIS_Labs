@@ -2,10 +2,10 @@
 #include <windows.h>
 #include <ctime>
 
-Puzzle::Puzzle()
+Puzzle::Puzzle(int level)
 {
 	srand(static_cast<int>(time(0)));
-	currentLevel = 1;
+	currentLevel = level;
 	while (currentLevel <= 3)
 	{
 		SetLevel(currentLevel);
@@ -24,6 +24,7 @@ Puzzle::Puzzle()
 
 void Puzzle::PrintBoard()
 {
+	cout << "Controls:\nW - up\nS - down\nA - left\nD - right\n\n\n";
 	for (int i = 0; i < size; i++)
 	{
 		for (int j = 0; j < size; j++)
@@ -49,7 +50,7 @@ bool Puzzle::CheckWinCondition()
 	{
 		for (int j = 0; j < size; j++)
 		{
-			if (!puzzleBoard[i][j].GheckPlacement(i, j))
+			if (!puzzleBoard[i][j].CheckPlacement(i, j))
 				return false;
 		}
 	}
@@ -94,9 +95,7 @@ void Puzzle::Swap(Tile &one, Tile &two)
 void Puzzle::AwaitPlayerInput()
 {
 	Direction dir;
-	char input;
-	input = _getch();
-	switch (input)
+	switch (_getch())
 	{
 	case 'w':
 		dir = Direction::up;
@@ -162,5 +161,4 @@ void Puzzle::SetLevel(int level)
 	default:
 		break;
 	}
-	
 }

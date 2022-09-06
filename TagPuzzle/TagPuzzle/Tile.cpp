@@ -12,7 +12,7 @@ char Tile::GetValue()
     return value;
 }
 
-bool Tile::GheckPlacement(int x, int y)
+bool Tile::CheckPlacement(int x, int y)
 {
     return (x == correctX && y == correctY);
 }

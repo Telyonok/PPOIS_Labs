@@ -18,6 +18,16 @@ void Menu::StartUpMenu()
 	}
 }
 
+int Menu::LevelChoice()
+{
+	int choice = 1;
+	cout << "Choose a level:\n1-3\n";
+	cin >> choice;
+	if (choice < 0 || choice > 3)
+		throw new exception("Choice out of range");
+	return choice;
+}
+
 void Menu::PrintMenu()
 {
 	cout << "WELCOME TO THE GAME OF TAGPUZZLE!!!!\n\n1-Start Game\n2-Quit\n";
@@ -25,8 +35,9 @@ void Menu::PrintMenu()
 
 void Menu::StartGame()
 {
-	puzzle = new Puzzle();
+	puzzle = new Puzzle(LevelChoice());
 	Congratulate();
+	_sleep(5000);
 }
 
 void Menu::Congratulate()

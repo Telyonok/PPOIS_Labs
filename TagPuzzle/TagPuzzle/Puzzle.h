@@ -1,3 +1,6 @@
+/// 
+/// Creates, shuffles and lets player control puzzle board
+///
 #pragma once
 #include <iostream>
 #include "Tile.h"
@@ -9,15 +12,16 @@ using namespace std;
 class Puzzle
 {
 public:
-	Puzzle();
-	void PrintBoard();
+	Puzzle(int level);
 private:
+	void PrintBoard();
 	void Shuffle();
 	bool CheckWinCondition();
 	void Move(Direction dir);
 	void Swap(Tile &one, Tile &two);
 	void AwaitPlayerInput();
 	void SetLevel(int level);
+	
 	int size;
 	int currentLevel;
 	int blankX;
@@ -37,6 +41,4 @@ private:
 						  Tile('K', 2, 0), Tile('L', 2, 1), Tile('M', 2, 2), Tile('N', 2, 3), Tile('O', 0, 3),
 						  Tile('P', 3, 0), Tile('Q', 3, 1),	Tile('R', 3, 2), Tile('S', 3, 3), Tile('T', 0, 3),
 						  Tile('U', 3, 0), Tile('V', 3, 1),	Tile('W', 3, 2), Tile('X', 3, 3), Tile(' ', 0, 3) };
-
 };
-
