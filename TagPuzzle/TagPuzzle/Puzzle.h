@@ -2,21 +2,21 @@
 /// Creates, shuffles and lets player control puzzle board
 ///
 #pragma once
+
+#include <conio.h>
 #include <iostream>
+
 #include "Tile.h"
 #include "Direction.h"
-#include <conio.h>
-
-using namespace std;
 
 class Puzzle
 {
 public:
 	Puzzle(int level);
 private:
-	void PrintBoard();
+	void PrintBoard() const;
 	void Shuffle();
-	bool CheckWinCondition();
+	bool CheckWinCondition() const;
 	void Move(Direction dir);
 	void Swap(Tile &one, Tile &two);
 	void AwaitPlayerInput();

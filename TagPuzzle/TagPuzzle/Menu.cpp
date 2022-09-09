@@ -28,7 +28,7 @@ int Menu::LevelChoice()
 	return choice;
 }
 
-void Menu::PrintMenu()
+void Menu::PrintMenu() const
 {
 	cout << "WELCOME TO THE GAME OF TAGPUZZLE!!!!\n\n1-Start Game\n2-Quit\n";
 }
@@ -40,7 +40,7 @@ void Menu::StartGame()
 	_sleep(5000);
 }
 
-void Menu::Congratulate()
+void Menu::Congratulate() const
 {
 	cout << "\n\n\n\n\nCONGRATULATIONS!!!!! You did it!\n";
 }

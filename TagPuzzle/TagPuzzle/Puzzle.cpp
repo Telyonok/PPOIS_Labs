@@ -1,6 +1,7 @@
-#include "Puzzle.h"
 #include <windows.h>
 #include <ctime>
+
+#include "Puzzle.h"
 
 Puzzle::Puzzle(int level)
 {
@@ -22,16 +23,16 @@ Puzzle::Puzzle(int level)
 	}
 }
 
-void Puzzle::PrintBoard()
+void Puzzle::PrintBoard() const
 {
-	cout << "Controls:\nW - up\nS - down\nA - left\nD - right\n\n\n";
+	std::cout << "Controls:\nW - up\nS - down\nA - left\nD - right\n\n\n";
 	for (int i = 0; i < size; i++)
 	{
 		for (int j = 0; j < size; j++)
 		{
-			cout << puzzleBoard[i][j].GetValue();
+			std::cout << puzzleBoard[i][j].GetValue();
 		}
-		cout << '\n';
+		std::cout << '\n';
 	}
 }
 
@@ -44,7 +45,7 @@ void Puzzle::Shuffle()
 	}
 }
 
-bool Puzzle::CheckWinCondition()
+bool Puzzle::CheckWinCondition() const
 {
 	for (int i = 0; i < size; i++)
 	{

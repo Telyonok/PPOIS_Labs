@@ -3,10 +3,10 @@
 ///
 
 #pragma once
-#include <iostream>
-#include "Puzzle.h"
 
-using namespace std;
+#include <iostream>
+
+#include "Puzzle.h"
 
 static class Menu
 {
@@ -14,10 +14,11 @@ public:
 	void StartUpMenu();
 private:
 	Puzzle *puzzle;
+
 	int LevelChoice();
-	void PrintMenu();
+	void PrintMenu() const;
 	void StartGame();
-	void Congratulate();
+	void Congratulate() const;
 	int GetPlayerChoice();
 };
 

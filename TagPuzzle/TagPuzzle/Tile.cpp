@@ -7,12 +7,12 @@ Tile::Tile(int value, int x, int y)
     correctY = y;
 }
 
-char Tile::GetValue()
+char Tile::GetValue() const
 {
     return value;
 }
 
-bool Tile::CheckPlacement(int x, int y)
+bool Tile::CheckPlacement(int x, int y) const
 {
     return (x == correctX && y == correctY);
 }
