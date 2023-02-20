@@ -25,18 +25,6 @@ class DisplayedSprite(Enum):
     tiger = 7
 
 class Tile:
-    CONST_REPOPULATION_CHANCE: int = 1000
-    CONST_TREE_GROWTH_CHANCE: int  = 10
-    CONST_TREE_DEATH_CHANCE: int  = 200
-    CONST_BUSH_GROWTH_CHANCE: int  = 8
-    CONST_BUSH_DEATH_CHANCE: int  = 400
-    CONST_WALL_APPEAR_CHANCE: int  = 1
-    CONST_WALL_DISAPPEAR_CHANCE: int  = 100
-    CONST_FRUIT_APPEAR_CHANCE: int  = 30
-    CONST_FRUIT_TREE_PROXIMITY_APPEAR_CHANCE: int  = 6000
-    CONST_FRUIT_DISAPPEAR_CHANCE: int  = 10000
-    CONST_MEAT_DISAPPEAR_CHANCE: int  = 1000
-
     def __init__(self, cords: Coordinates, field):
         self.__object: Object = None
         self.__entity: Entity = None
@@ -71,34 +59,34 @@ class Tile:
                 for species in GameState.getExtinctionList():
                     if (self.__tryRepopulate(species)):
                         return
-            elif (self.__tryPlaceEntity(Tree(), Tile.CONST_TREE_GROWTH_CHANCE)):
+            elif (self.__tryPlaceEntity(Tree(), GameState.CONST_TREE_GROWTH_CHANCE)):
                 return
-            elif (self.__tryPlaceEntity(Wall(), Tile.CONST_WALL_APPEAR_CHANCE)):
+            elif (self.__tryPlaceEntity(Wall(), GameState.CONST_WALL_APPEAR_CHANCE)):
                 return
-            elif (self.__tryPlaceObject(Object.bush, Tile.CONST_BUSH_GROWTH_CHANCE)):
+            elif (self.__tryPlaceObject(Object.bush, GameState.CONST_BUSH_GROWTH_CHANCE)):
                 return
             elif (self.__inTreeProximity(field)):
-                if (self.__tryPlaceObject(Object.fruit, Tile.CONST_FRUIT_TREE_PROXIMITY_APPEAR_CHANCE)):
+                if (self.__tryPlaceObject(Object.fruit, GameState.CONST_FRUIT_TREE_PROXIMITY_APPEAR_CHANCE)):
                     return
             else:
-                if (self.__tryPlaceObject(Object.fruit, Tile.CONST_FRUIT_APPEAR_CHANCE)):
+                if (self.__tryPlaceObject(Object.fruit, GameState.CONST_FRUIT_APPEAR_CHANCE)):
                     return
         elif (self.entity == None):
             if (self.object == Object.fruit):
-                self.__tryRemoveObject(Tile.CONST_FRUIT_DISAPPEAR_CHANCE)
+                self.__tryRemoveObject(GameState.CONST_FRUIT_DISAPPEAR_CHANCE)
             elif (self.object == Object.bush):
-                self.__tryRemoveObject(Tile.CONST_BUSH_DEATH_CHANCE)
+                self.__tryRemoveObject(GameState.CONST_BUSH_DEATH_CHANCE)
             elif (self.object == Object.meat):
-                self.__tryRemoveObject(Tile.CONST_MEAT_DISAPPEAR_CHANCE)
+                self.__tryRemoveObject(GameState.CONST_MEAT_DISAPPEAR_CHANCE)
         else:
             if (isinstance(self.entity, Tree)):
-                self.__tryRemoveEntity(Tile.CONST_TREE_DEATH_CHANCE)
+                self.__tryRemoveEntity(GameState.CONST_TREE_DEATH_CHANCE)
             elif (isinstance(self.entity, Wall)):
-                self.__tryRemoveEntity(Tile.CONST_WALL_DISAPPEAR_CHANCE)
+                self.__tryRemoveEntity(GameState.CONST_WALL_DISAPPEAR_CHANCE)
 
 
     def __tryRepopulate(self, species: List[str]):
-        if (randrange(100000) <= Tile.CONST_REPOPULATION_CHANCE):
+        if (randrange(100000) <= GameState.CONST_REPOPULATION_CHANCE):
             if (species == "Gazelle"):
                 self.__entity = Gazelle(self.cords)
             elif (species == "Tiger"):

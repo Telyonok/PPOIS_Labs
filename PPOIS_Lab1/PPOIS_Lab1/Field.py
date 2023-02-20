@@ -8,12 +8,11 @@ from GameState import GameState
 
 class Field:
 
-    __CONST_WIDTH: int = 40
-    __CONST_HEIGHT: int = 20
-
-    def __init__(self):
-        self.__tiles = [[Tile(Coordinates(x,y), self) for y in range(Field.__CONST_WIDTH)]
-                       for x in range(Field.__CONST_HEIGHT)]
+    def __init__(self, height: int, width: int):
+        self.__height = height
+        self.__width = width
+        self.__tiles = [[Tile(Coordinates(x,y), self) for y in range(width)]
+                       for x in range(height)]
 
     @property
     def tiles(self):
@@ -21,11 +20,11 @@ class Field:
 
     @property
     def width(self):
-        return Field.__CONST_WIDTH
+        return self.__width
 
     @property
     def height(self):
-        return Field.__CONST_HEIGHT
+        return self.__height
     
     def tryMoveEntity(self, fromCords: Coordinates, toCords: Coordinates):
         tileToMoveFrom = self.tiles[fromCords.x][fromCords.y]

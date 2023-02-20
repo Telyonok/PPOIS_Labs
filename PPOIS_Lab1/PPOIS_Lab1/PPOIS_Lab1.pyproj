@@ -26,6 +26,7 @@
     <Compile Include="Coordinates.py" />
     <Compile Include="Entity.py" />
     <Compile Include="Field.py" />
+    <Compile Include="FieldLoader.py" />
     <Compile Include="GameState.py" />
     <Compile Include="Gazelle.py" />
     <Compile Include="Object.py" />
